@@ -1,18 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To Do List Application</title>
 </head>
+
 <body>
     <h1>To Do List Application</h1>
     <div class="wrapper">
-        <form>
-            <input id="todo-input" type="text" placeholder="Enter Text" autocomplete="off"/>
-            <button id="add-button">Add</button>
-        </form>
+        <input id="todo-input" type="text" placeholder="Enter Text" autocomplete="off" />
+        <button type="button" id="add-button" onclick="addItem()">Add</button>
+        <ul id="list"></ul>
     </div>
-    
+
 </body>
+<script>
+    const listArray = []
+
+    const initListItem = {
+        id: 0,
+        value: '',
+        flag: false
+    }
+
+    function addItem() {
+        const inputText = document.getElementById("todo-input")
+        const newObj = { ...initListItem }
+        newObj.id = listArray.length
+        newObj.value = inputText.value
+        listArray.push(newObj)
+        inputText.value = ''
+        console.log(listArray)
+    }
+</script>
+
 </html>
