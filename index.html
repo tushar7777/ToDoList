@@ -32,8 +32,19 @@
         newObj.value = inputText.value
         listArray.push(newObj)
         inputText.value = ''
-        console.log(listArray)
+        updateList()
     }
+
+    function updateList() {
+        const parent = document.getElementById('list')
+        const child = document.createElement('li')
+        for (let i = 0; i < listArray.length; i++) {
+            child.id = listArray[i].id
+            child.textContent = listArray[i].value
+            parent.appendChild(child)
+        }
+    }
+
 </script>
 
 </html>
