@@ -28,7 +28,7 @@
     function addItem() {
         const inputText = document.getElementById("todo-input")
         const newObj = { ...initListItem }
-        newObj.id =  Date.now()
+        newObj.id = Date.now()
         newObj.value = inputText.value
         listArray.push(newObj)
         inputText.value = ''
@@ -41,7 +41,8 @@
         for (let i = 0; i < listArray.length; i++) {
             const child = document.createElement('li')
             child.id = listArray[i].id
-            child.textContent = listArray[i].value
+            child.innerHTML = listArray[i].value + '<input type="checkbox" id="chk-' + listArray[i].id + '">'
+                + '<button type="button" id="del-' + listArray[i].id + '">Delete</button>'
             parent.appendChild(child)
         }
     }
