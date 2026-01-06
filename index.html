@@ -28,7 +28,7 @@
     function addItem() {
         const inputText = document.getElementById("todo-input")
         const newObj = { ...initListItem }
-        newObj.id =  Date()
+        newObj.id =  Date.now()
         newObj.value = inputText.value
         listArray.push(newObj)
         inputText.value = ''
