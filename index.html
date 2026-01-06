@@ -28,7 +28,7 @@
     function addItem() {
         const inputText = document.getElementById("todo-input")
         const newObj = { ...initListItem }
-        newObj.id = listArray.length
+        newObj.id =  Date()
         newObj.value = inputText.value
         listArray.push(newObj)
         inputText.value = ''
@@ -37,8 +37,9 @@
 
     function updateList() {
         const parent = document.getElementById('list')
-        const child = document.createElement('li')
+        parent.innerHTML = ''
         for (let i = 0; i < listArray.length; i++) {
+            const child = document.createElement('li')
             child.id = listArray[i].id
             child.textContent = listArray[i].value
             parent.appendChild(child)
