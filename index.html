@@ -17,7 +17,7 @@
 
 </body>
 <script>
-    const listArray = []
+    let listArray = []
 
     const initListItem = {
         id: 0,
@@ -46,6 +46,15 @@
             parent.appendChild(child)
         }
     }
+
+    document.getElementById('list').addEventListener('click', (e) => {
+        console.log(e.target.id)
+        if (e.target.id.startsWith('del-')) {
+            const idToDelete = parseInt(e.target.id.replace('del-', ''))
+            listArray = listArray.filter(item => item.id !== idToDelete)
+            updateList()
+        }
+    })
 
 </script>
 
