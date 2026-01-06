@@ -41,7 +41,7 @@
         for (let i = 0; i < listArray.length; i++) {
             const child = document.createElement('li')
             child.id = listArray[i].id
-            child.innerHTML = listArray[i].value + '<input type="checkbox" id="chk-' + listArray[i].id + '">'
+            child.innerHTML = listArray[i].value + '<input type="checkbox" id="chk-' + listArray[i].id + '" value="' + listArray[i].flag + '"' + (listArray[i].flag ? ' checked' : '') + ' />'
                 + '<button type="button" id="del-' + listArray[i].id + '">Delete</button>'
             parent.appendChild(child)
         }
@@ -53,6 +53,14 @@
             const idToDelete = parseInt(e.target.id.replace('del-', ''))
             listArray = listArray.filter(item => item.id !== idToDelete)
             updateList()
+        }else{
+            if (e.target.id.startsWith('chk-')) {
+                const idToCheck = parseInt(e.target.id.replace('chk-', ''))
+                const item = listArray.find(item => item.id === idToCheck)
+                if (item) {
+                    item.flag = e.target.checked
+                }
+            }
         }
     })
 
